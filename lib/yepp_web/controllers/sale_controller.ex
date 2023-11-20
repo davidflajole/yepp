@@ -16,10 +16,11 @@ defmodule YeppWeb.SaleController do
 
   def create(conn, %{"sale" => sale_params}) do
     case Auction.create_sale(sale_params) do
-      {:ok, sale} ->
+      {:ok, _sale} ->
         conn
         |> put_flash(:info, "Sale created successfully.")
-        |> redirect(to: ~p"/sales/#{sale}")
+        |> redirect(to: ~p"/sales")
+        # |> redirect(to: ~p"/sales/#{sale}")
 
       {:error, %Ecto.Changeset{} = changeset} ->
         render(conn, :new, changeset: changeset)
@@ -41,10 +42,11 @@ defmodule YeppWeb.SaleController do
     sale = Auction.get_sale!(id)
 
     case Auction.update_sale(sale, sale_params) do
-      {:ok, sale} ->
+      {:ok, _sale} ->
         conn
         |> put_flash(:info, "Sale updated successfully.")
-        |> redirect(to: ~p"/sales/#{sale}")
+        |> redirect(to: ~p"/sales")
+        # |> redirect(to: ~p"/sales/#{sale}")
 
       {:error, %Ecto.Changeset{} = changeset} ->
         render(conn, :edit, sale: sale, changeset: changeset)
