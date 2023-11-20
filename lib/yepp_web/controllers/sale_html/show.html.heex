@@ -1,0 +1,19 @@
+<.header>
+  Sale <%= @sale.id %>
+  <:subtitle>This is a sale record from your database.</:subtitle>
+  <:actions>
+    <.link href={~p"/sales/#{@sale}/edit"}>
+      <.button>Edit sale</.button>
+    </.link>
+  </:actions>
+</.header>
+
+<.list>
+  <:item title="Name"><%= @sale.name %></:item>
+  <:item title="Description"><%= @sale.description %></:item>
+  <:item title="Status"><%= @sale.status %></:item>
+  <:item title="Start"><%= @sale.start %></:item>
+  <:item title="End"><%= @sale.end %></:item>
+</.list>
+
+<.back navigate={~p"/sales"}>Back to sales</.back>
